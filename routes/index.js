@@ -5,7 +5,7 @@ var getLanguages = require('../get_languages');
 /* GET home page. */
 getLanguages(function (languages) {
   router.get('/', function(req, res) {
-    res.render('index', { title: 'Express', languages: languages });
+    res.render('index', { title: 'Language Colors', languages: languages });
   });
 });
 
