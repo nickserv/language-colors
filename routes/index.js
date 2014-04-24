@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var getLanguages = require('../get_languages');
+var languageColors = require('../language_colors');
 
 /* GET home page. */
-getLanguages(function (languages) {
+languageColors(function (languages) {
   router.get('/', function(req, res) {
     res.render('index', { title: 'Language Colors', languages: languages });
   });
