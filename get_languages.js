@@ -8,7 +8,11 @@ module.exports = function (callback) {
     var languages = yaml.safeLoad(body);
 
     Object.keys(languages).forEach(function (languageName) {
-      languages[languageName] = languages[languageName].color;
+      if (languages[languageName]) {
+        languages[languageName] = languages[languageName].color;
+      } else {
+        delete languages[languageName];
+      }
     });
 
     if (!error && response.statusCode === 200) {
