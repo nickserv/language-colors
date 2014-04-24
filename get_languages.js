@@ -1,24 +1,28 @@
-var request = require('request');
+var https = require('https');
 var yaml = require('js-yaml');
 
 module.exports = function (callback) {
   var languagesURL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
+  var body = '';
 
-  request(languagesURL, function (error, response, body) {
-    var languages = yaml.safeLoad(body);
-
-    Object.keys(languages).forEach(function (languageName) {
-      if (languages[languageName]) {
-        languages[languageName] = languages[languageName].color;
-      } else {
-        delete languages[languageName];
-      }
+  https.get(languagesURL, function(res) {
+    res.on('data', function (chunk) {
+      body += chunk;
     });
+    res.on('end', function () {
+      var languages = yaml.safeLoad(body);
 
-    if (!error && response.statusCode === 200) {
+      Object.keys(languages).forEach(function (languageName) {
+        if (languages[languageName]) {
+          languages[languageName] = languages[languageName].color;
+        } else {
+          delete languages[languageName];
+        }
+      });
+
       callback(languages);
-    } else {
-      callback(undefined);
-    }
+    });
+  }).on('error', function(e) {
+    callback(undefined);
   });
 };
