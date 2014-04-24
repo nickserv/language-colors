@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  // Introduction, shares content with the readme
   h1= title
   p A simple web app and service for viewing GitHub's language colors.
   p
@@ -9,6 +10,7 @@ block content
       code /index.json
     | .
 
+  // The grid of languages to display
   .languages.pure-g
     for color, language in languages
       .pure-u-1-4.pure-g
