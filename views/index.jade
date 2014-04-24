@@ -4,4 +4,7 @@ block content
   h1= title
   p A simple web app and service for viewing GitHub's language colors.
 
-  pre= JSON.stringify(languages, null, '    ')
+  ul
+    for color, language in languages
+      if color
+        li(style="color: "+color+";")= language
