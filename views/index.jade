@@ -9,7 +9,9 @@ block content
       code /index.json
     | .
 
-  ul
+  ul.languages
     for color, language in languages
       if color
-        li(style="color: "+color+";")= language
+        li
+          .color(style="background-color: "+color+";")
+          span.language= language

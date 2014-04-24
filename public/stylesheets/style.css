@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+ul.languages {
+  margin-top: 50px;
+  padding-left: 0;
+}
+ul.languages li {
+  list-style: none;
+}
+
+.color {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin-right: 25px;
+}
+.color, .language {
+  vertical-align: middle;
+}
