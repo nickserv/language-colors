@@ -3,7 +3,7 @@ var router = express.Router();
 var languageColors = require('../language_colors');
 
 // GET home page
-languageColors(function (languages) {
+languageColors.get(function (languages) {
   // HTML
   router.get('/', function(req, res) {
     res.render('index', {
