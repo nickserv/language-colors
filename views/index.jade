@@ -12,6 +12,8 @@ block content
   .languages.pure-g
     for color, language in languages
       if color
-        .pure-u-1-4
-          .color(style="background-color: "+color+";")
-          span.language= language
+        .pure-u-1-4.pure-g
+          .pure-u-1-6
+            .color(style="background-color: "+color+";")
+          .pure-u-5-6
+            span.language= language
