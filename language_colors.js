@@ -1,8 +1,23 @@
 var https = require('https');
 var yaml = require('js-yaml');
+var extend = require('util')._extend;
+
+var languagesURL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
+
+function filterColors(oldLanguages) {
+  var languages = extend({}, oldLanguages);
+
+  Object.keys(languages).forEach(function (languageName) {
+    if (languages[languageName]) {
+      languages[languageName] = languages[languageName].color;
+    } else {
+      delete languages[languageName];
+    }
+  });
+  return languages;
+}
 
 module.exports = function (callback) {
-  var languagesURL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
   var body = '';
 
   https.get(languagesURL, function(res) {
@@ -10,16 +25,7 @@ module.exports = function (callback) {
       body += chunk;
     });
     res.on('end', function () {
-      var languages = yaml.safeLoad(body);
-
-      Object.keys(languages).forEach(function (languageName) {
-        if (languages[languageName]) {
-          languages[languageName] = languages[languageName].color;
-        } else {
-          delete languages[languageName];
-        }
-      });
-
+      var languages = filterColors(yaml.safeLoad(body));
       callback(languages);
     });
   }).on('error', function(e) {
