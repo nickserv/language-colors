@@ -7,6 +7,10 @@ module.exports = function (callback) {
   request(languagesURL, function (error, response, body) {
     var languages = yaml.safeLoad(body);
 
+    Object.keys(languages).forEach(function (languageName) {
+      languages[languageName] = languages[languageName].color;
+    });
+
     if (!error && response.statusCode === 200) {
       callback(languages);
     } else {
