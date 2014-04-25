@@ -11,9 +11,6 @@ a {
   margin-top: 50px;
   list-style: none;
   padding-left: 0;
-  -moz-column-count: 4;
-  -webkit-column-count: 4;
-  column-count: 4;
 }
 
 .color {
@@ -24,4 +21,33 @@ a {
 }
 .color, .language {
   vertical-align: middle;
+}
+
+/* MEDIA QUERIES */
+
+/* Small devices (tablets) */
+@media (min-width: 768px) {
+  .languages {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+/* Medium devices (desktops) */
+@media (min-width: 992px) {
+  .languages {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+/* Large devices (large desktops) */
+@media (min-width: 1200px) {
+  .languages {
+    -moz-column-count: 5;
+    -webkit-column-count: 5;
+    column-count: 5;
+  }
 }
