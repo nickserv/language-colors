@@ -1,24 +1,28 @@
+/* Some nice default styles from Express */
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
 
+/* Represents the entire collection of languages */
 .languages {
   margin-top: 50px;
   list-style: none;
   padding-left: 0;
 }
 
+/* Represents an individual color for a language */
 .color {
   display: inline-block;
   height: 25px;
   width: 25px;
   margin-right: 25px;
 }
+
+/* Vertically align colors and language names to line them up properly */
 .color, .language {
   vertical-align: middle;
 }
