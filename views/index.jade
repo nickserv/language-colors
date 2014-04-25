@@ -11,10 +11,8 @@ block content
     | .
 
   // The grid of languages to display
-  .languages.pure-g
+  ul.languages
     for color, language in languages
-      .pure-u-1-4.pure-g
-        .pure-u-1-6
-          .color(style="background-color: "+color+";")
-        .pure-u-5-6
-          span.language= language
+      li
+        .color(style="background-color: "+color+";")
+        span.language= language
