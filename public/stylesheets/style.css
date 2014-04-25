@@ -19,7 +19,8 @@ a {
   display: inline-block;
   height: 25px;
   width: 25px;
-  margin-right: 25px;
+  margin: 5px 10px;
+  border-radius: 50%;
 }
 
 /* Vertically align colors and language names to line them up properly */
