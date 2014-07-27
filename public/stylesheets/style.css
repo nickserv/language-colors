@@ -1,10 +1,11 @@
-/* Some nice default styles from Express */
+/* General styles, some borrowed from GitHub */
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Helvetica, Arial, sans-serif;
 }
 a {
-  color: #00B7FF;
+  color: #4183c4;
+  text-decoration: none;
 }
 
 /* Represents the entire collection of languages */
