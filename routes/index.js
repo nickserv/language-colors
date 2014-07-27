@@ -6,10 +6,7 @@ var languageColors = require('../language_colors');
 languageColors.get(function (languages) {
   // HTML
   router.get('/', function(req, res) {
-    res.render('index', {
-      title: 'Language Colors',
-      languages: languages
-    });
+    res.render('index', { languages: languages });
   });
 
   // JSON
