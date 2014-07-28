@@ -1,5 +1,6 @@
 var https = require('https');
 var yaml = require('js-yaml');
+var request = require('request');
 
 // The URL of the data file with GitHub's language colors.
 exports.languagesURL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
@@ -23,17 +24,12 @@ exports.filterColors = function (languages) {
 // ready. The languages Object has String language name keys and String hex
 // color values (with leading "#"s).
 exports.get = function (callback) {
-  var body = '';
-
-  https.get(exports.languagesURL, function(res) {
-    res.on('data', function (chunk) {
-      body += chunk;
-    });
-    res.on('end', function () {
+  request(exports.languagesURL, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
       var languages = exports.filterColors(yaml.safeLoad(body));
       callback(languages);
-    });
-  }).on('error', function(e) {
-    callback(undefined);
-  });
+    } else {
+      callback(undefined);
+    }
+  })
 };
