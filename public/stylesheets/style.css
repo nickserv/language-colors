@@ -7,6 +7,9 @@ a {
   color: #4183c4;
   text-decoration: none;
 }
+.text-muted {
+  color: #777;
+}
 
 /* Represents the entire collection of languages */
 .languages {

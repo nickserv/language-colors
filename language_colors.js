@@ -26,9 +26,9 @@ exports.get = function (callback) {
   request(exports.languagesURL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var languages = exports.filterColors(yaml.safeLoad(body));
-      callback(languages);
+      callback(languages, new Date());
     } else {
-      callback(undefined);
+      callback(undefined, new Date());
     }
   })
 };
