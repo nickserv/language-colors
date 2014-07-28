@@ -1,6 +1,5 @@
-var https = require('https');
-var yaml = require('js-yaml');
 var request = require('request');
+var yaml = require('js-yaml');
 
 // The URL of the data file with GitHub's language colors.
 exports.languagesURL = 'https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml';
