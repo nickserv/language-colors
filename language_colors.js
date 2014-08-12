@@ -1,3 +1,4 @@
+var Promise = require('es6-promise').Promise;
 var request = require('request');
 var yaml = require('js-yaml');
 
@@ -22,13 +23,18 @@ exports.filterColors = function (languages) {
 // creates a new languages Object, and passes it to the callback when it is
 // ready. The languages Object has String language name keys and String hex
 // color values (with leading "#"s).
-exports.get = function (callback) {
-  request(exports.languagesURL, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var languages = exports.filterColors(yaml.safeLoad(body));
-      callback(languages, new Date());
-    } else {
-      callback(undefined, new Date());
-    }
-  })
+exports.get = function () {
+  return new Promise(function (resolve, reject) {
+    request(exports.languagesURL, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var languages = exports.filterColors(yaml.safeLoad(body));
+        resolve({
+          languages: languages,
+          updated: new Date()
+        });
+      } else {
+        reject();
+      }
+    })
+  });
 };
