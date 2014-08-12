@@ -1,4 +1,4 @@
-var Promise = require('rsvp').Promise;
+var Promise = require('bluebird');
 var request = require('request');
 var yaml = require('js-yaml');
 
