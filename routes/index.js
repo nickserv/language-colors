@@ -4,19 +4,19 @@ var moment = require('moment');
 var languageColors = require('../language_colors');
 
 // GET home page
-languageColors.get(function (languages, updated) {
+languageColors.get().then(function (result) {
   // HTML
   router.get('/', function(req, res) {
-    res.render('index', {
-      languages: languages,
-      updated: moment(updated).fromNow()
-    });
+    result.updated = moment(result.updated).fromNow();
+    res.render('index', result);
   });
 
   // JSON
   router.get('/index.json', function(req, res) {
-    res.json(languages);
+    res.json(result.languages);
   });
+}, function () {
+  throw('color loading failed');
 });
 
 module.exports = router;
