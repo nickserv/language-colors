@@ -1,4 +1,4 @@
-var Promise = require('es6-promise').Promise;
+var Promise = require('rsvp').Promise;
 var request = require('request');
 var yaml = require('js-yaml');
 
