@@ -15,7 +15,10 @@ languageColors.get(function (languages, updated) {
 
   // JSON
   router.get('/index.json', function(req, res) {
-    res.json(languages);
+    res.json({
+      languages: languages,
+      updated: updated
+    });
   });
 });
 
