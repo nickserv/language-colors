@@ -26,6 +26,24 @@ describe('languageColors', function(){
   });
 
   describe('.get()', function(){
-    it('passes a languages object to the callback');
+    it('passes a languages object to the callback', function(done){
+      languageColors.get(function (languages, updated) {
+        // both parameters are defined
+        assert(languages);
+        assert(updated);
+
+        // languages is not empty
+        var languageNames = Object.keys(languages);
+        assert(languageNames.length > 1);
+
+        // languages is an object with String keys and String color values
+        var hexColorRegExp = /^#[0-9A-Fa-f]{3,6}$/;
+        assert(languageNames.every(function (languageName) {
+          return languages[languageName].match(hexColorRegExp);
+        }));
+
+        done();
+      })
+    });
   });
 });
