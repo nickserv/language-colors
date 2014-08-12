@@ -10,7 +10,7 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "autoprefixer": "^2.1.1",
+    "autoprefixer": "~2.1",
     "debug": "^1.0.4",
     "express": "^4.7.2",
     "express-autoprefixer": "^1.0.0",
