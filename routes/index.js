@@ -7,7 +7,7 @@ var languageColors = require('../language_colors');
 languageColors.get().then(function (result) {
   // HTML
   router.get('/', function(req, res) {
-    result.updated = moment(result.updated).fromNow();
+    result.updatedString = moment(result.updated).fromNow();
     res.render('index', result);
   });
 
