@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var autoprefixer = require('express-autoprefixer');
 
 var app = express();
 
@@ -10,7 +9,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(autoprefixer());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var moment = require('moment');
