@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/mocha"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": ">=0.10"
   },
   "dependencies": {
     "autoprefixer": "~2.1",
