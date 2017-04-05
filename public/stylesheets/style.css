@@ -1,10 +1,10 @@
 /* General styles, some borrowed from GitHub */
 body {
   padding: 50px;
-  font: 14px Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
-  color: #4183c4;
+  color: #00B7FF;
   text-decoration: none;
 }
 .text-muted {

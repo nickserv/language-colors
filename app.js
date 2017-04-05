@@ -1,53 +1,51 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('static-favicon');
 var logger = require('morgan');
-var autoprefixer = require('express-autoprefixer');
-
-var routes = require('./routes/index');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
-app.use(favicon());
 app.use(logger('dev'));
-app.use(autoprefixer());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+var moment = require('moment');
+var languageColors = require('./language_colors');
 
-/// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+// GET home page
+languageColors.get().then(function (result) {
+  // HTML
+  app.get('/', function(req, res) {
+    result.updatedString = moment(result.updated).fromNow();
+    res.render('index', result);
+  });
+
+  // JSON
+  app.get('/index.json', function(req, res) {
+    res.json(result.languages);
+  });
+
+  /// catch 404 and forward to error handler
+  app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-});
+  });
 
-/// error handlers
+  // error handler
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+    // render the error page
     res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+    res.render('error');
+  });
+}, function () {
+  throw('color loading failed');
 });
 
 
