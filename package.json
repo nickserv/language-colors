@@ -10,17 +10,17 @@
     "node": ">=0.10"
   },
   "dependencies": {
-    "autoprefixer": "~2.1",
+    "autoprefixer": "~6.7",
     "debug": "^2.6.3",
     "express": "^4.15.2",
-    "express-autoprefixer": "^1.0.0",
+    "express-autoprefixer": "^5.1.1",
     "js-yaml": "^3.0.2",
     "moment": "^2.8.1",
     "morgan": "^1.8.1",
-    "pug": "^2.0.0-beta9",
+    "pug": "^2.0.0-beta11",
     "request": "^2.39.0"
   },
   "devDependencies": {
-    "mocha": "^1.21.1"
+    "mocha": "^3.2.0"
   }
 }
