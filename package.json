@@ -7,10 +7,9 @@
     "test": "mocha"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=0.12"
   },
   "dependencies": {
-    "bluebird": "^2.2.2",
     "debug": "^2.6.3",
     "express": "^4.15.2",
     "js-yaml": "^3.0.2",
